@@ -1,28 +1,92 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-      home: Home(),
+      home: NinjaCard(),
     ));
 
-class Home extends StatelessWidget {
-  // const MyWidget({super.key});
-
+class NinjaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[800],
       appBar: AppBar(
-        title: Text('my first app'),
+        title: Text('Ninja ID card'),
         centerTitle: true,
-        backgroundColor: Colors.red[600],
+        backgroundColor: Colors.grey[600],
+        elevation: 0.0,
       ),
       body: Padding(
-        padding: EdgeInsets.all(90.0),
-        child: Text('hello'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Text('click me'),
-        backgroundColor: Colors.red[600],
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/thewanderer.jpg'),
+                radius: 40.0,
+              ),
+            ),
+            Divider(
+              height: 60.0,
+              color: Colors.grey[200],
+            ),
+            Text(
+              'NAME',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              'Jade',
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Text(
+              'CURRENT NINJA LEVEL',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              '8',
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Row(
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.grey[100],
+                ),
+                SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  'Jade@gmail.com',
+                  style: TextStyle(
+                    color: Colors.grey[400],
+                    fontSize: 18.0,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
