@@ -1,107 +1,37 @@
 import 'package:flutter/material.dart';
+import 'quotes.dart';
 
 void main() => runApp(MaterialApp(
-      home: NinjaCard(),
+      home: QuoteList(),
     ));
 
-class NinjaCard extends StatefulWidget {
+class QuoteList extends StatefulWidget {
   @override
-  State<NinjaCard> createState() => _NinjaCardState();
+  State<QuoteList> createState() => _QuoteListState();
 }
 
-class _NinjaCardState extends State<NinjaCard> {
-  int ninjalevel = 0;
+class _QuoteListState extends State<QuoteList> {
+  List<Quote> quotes = [
+    Quote('Be yourself; everyone else is already taken', 'Oscar Wilde'),
+    Quote('Be yourself; everyone else is already taken', 'Oscar Wilde'),
+    Quote('Be yourself; everyone else is already taken', 'Oscar Wilde'),
+    // 'I have nothing to declare except my genius',
+    // 'The truth is rarely pure and  never simple'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('Ninja ID card'),
+        title: Text('Awesome Quotes'),
         centerTitle: true,
-        backgroundColor: Colors.grey[600],
-        elevation: 0.0,
+        backgroundColor: Colors.redAccent,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            ninjalevel += 1;
-          });
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.grey[600],
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/thewanderer.jpg'),
-                radius: 40.0,
-              ),
-            ),
-            Divider(
-              height: 60.0,
-              color: Colors.grey[200],
-            ),
-            Text(
-              'NAME',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              'Jade',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2.0,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Text(
-              'CURRENT NINJA LEVEL',
-              style: TextStyle(
-                color: Colors.grey,
-                letterSpacing: 2.0,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Text(
-              '$ninjalevel',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2.0,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 30.0),
-            Row(
-              children: [
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[100],
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text(
-                  'Jade@gmail.com',
-                  style: TextStyle(
-                    color: Colors.grey[400],
-                    fontSize: 18.0,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: quotes
+            .map((quote) => Text('${quote.text} - ${quote.author}'))
+            .toList(),
       ),
     );
   }
