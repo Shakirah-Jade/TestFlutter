@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quotes.dart';
+import 'quotecard.dart';
 
 void main() => runApp(MaterialApp(
       home: QuoteList(),
@@ -29,9 +30,7 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes
-            .map((quote) => Text('${quote.text} - ${quote.author}'))
-            .toList(),
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
       ),
     );
   }
